@@ -8,4 +8,16 @@ export class Ship {
         this.sunk = false;
     }
 
+    hit() {
+        if (this.numOfHits < this.length) {
+            this.numOfHits += 1;
+        }
+    }
+
+    isSunk() {
+        if (this.numOfHits == this.length) {
+            this.sunk = true;
+        }
+    }
+
 }
