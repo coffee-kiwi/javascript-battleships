@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --open --config webpack.dev.js",
-    "installWebpack": "npm install webpack webpack-cli html-webpack-plugin style-loader css-loader html-loader webpack-dev-server --save-dev"
+    "installWebpack": "npm install webpack webpack-cli html-webpack-plugin style-loader css-loader html-loader webpack-dev-server --save-dev",
+    "test": "jest",
+    "watch": "jest --watch *.js"
   },
   "keywords": [],
   "author": "",
