@@ -1,4 +1,3 @@
-
 export class Ship {
 
     constructor(name, length) {

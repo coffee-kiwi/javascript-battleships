@@ -1,4 +1,4 @@
-// import * as shipType from './shipTypes.js';
+
 import { Ship } from './ships.js'
 
 describe ('Ships creation', () => {
@@ -12,7 +12,6 @@ describe ('Ships creation', () => {
         const patrol = new Ship('Patrol', 2);
         expect(patrol.name).toBe('Patrol');
     })
-
 })
 
 describe ('Ship functions', () => {
