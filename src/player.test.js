@@ -12,4 +12,6 @@ describe('Player setup', () => {
         const player = new Player('human');
         expect(player.gameboard).toBeDefined();
     })
+
+    
 })
