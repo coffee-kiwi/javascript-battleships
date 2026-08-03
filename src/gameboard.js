@@ -45,7 +45,12 @@ export class Gameboard {
 
         if (square instanceof Ship) {
             square.hit();
+            if (square.isSunk()) {
+                console.log("Opponent's ship has been sunk!")
+                // Add any other necessary message
+            }
             this.board[row][col] = 1;
+
         } else if (square == 1) {
             console.log('Square has already been hit');
             // Throw error or ask to rerun function?

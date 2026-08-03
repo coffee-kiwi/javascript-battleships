@@ -56,7 +56,6 @@ describe('Gameplay', () => {
             gameboard.placeShip(gameboard.patrol, [0,1])
             gameboard.receiveAttack([0,0]);
             expect(gameboard.patrol.numOfHits).toBe(0);
-            console.log(gameboard.board)
         })
     })
 })
