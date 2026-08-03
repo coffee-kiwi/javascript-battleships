@@ -47,12 +47,16 @@ describe('Gameplay', () => {
     })
     describe('During players attacking phase', () => {
         it('The ship receives an attack and adds 1 to the hit count', () => {
-            // gameboard.placeShip(gameboard.patrol, [0,0]);
-            // gameboard.receiveAttack([0,0]);
-            // expect(patrol.numOfHits).toBe(1);
+            gameboard.placeShip(gameboard.patrol, [0,0]);
+            gameboard.receiveAttack([0,0]);
+            expect(gameboard.patrol.numOfHits).toBe(1);
         })
-        // it('Reports on a sinking ship if the ship sinks', () => {
 
-        // })
+        it('Does not increase hits upon miss', () => {
+            gameboard.placeShip(gameboard.patrol, [0,1])
+            gameboard.receiveAttack([0,0]);
+            expect(gameboard.patrol.numOfHits).toBe(0);
+            console.log(gameboard.board)
+        })
     })
 })
