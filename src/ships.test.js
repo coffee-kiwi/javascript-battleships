@@ -1,5 +1,5 @@
 
-import { Ship } from './ships.js'
+import { Ship } from './ship.js'
 
 describe ('Ships creation', () => {
 

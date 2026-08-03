@@ -1,5 +1,5 @@
 import { Gameboard } from './gameboard.js';
-import { Ship } from './ships.js';
+import { Ship } from './ship.js';
 
 describe('Gameboard setup', () => {
     let gameboard;
@@ -16,10 +16,10 @@ describe('Gameboard setup', () => {
     describe('When placing ships', () => {
         describe('Horizontal placement', () => {
             it('places ship by filling in squares on the board with the ships name', () => {
-                const patrol = new Ship('Patrol', 2);
-                gameboard.placeShip(patrol, [0,0]);
-                expect(gameboard.board[0][0]).toBe("Patrol");
-                expect(gameboard.board[0][1]).toBe("Patrol");
+                // const patrol = new Ship('Patrol', 2);
+                gameboard.placeShip(gameboard.patrol, [0,0]);
+                expect(gameboard.board[0][0]).toBe(gameboard.patrol);
+                expect(gameboard.board[0][1]).toBe(gameboard.patrol);
             })
 
         })
@@ -27,12 +27,12 @@ describe('Gameboard setup', () => {
         describe('Vertical placement', () => {
             it('places ship by filling in squares on the board with the ships name', () => {
                 gameboard.switchDirection();
-                const battleship = new Ship('Battleship', 4);
-                gameboard.placeShip(battleship, [0,0]);
-                expect(gameboard.board[0][0]).toBe("Battleship");
-                expect(gameboard.board[1][0]).toBe("Battleship");
-                expect(gameboard.board[2][0]).toBe("Battleship");
-                expect(gameboard.board[3][0]).toBe("Battleship");
+                // const battleship = new Ship('Battleship', 4);
+                gameboard.placeShip(gameboard.battleship, [0,0]);
+                expect(gameboard.board[0][0]).toBe(gameboard.battleship);
+                expect(gameboard.board[1][0]).toBe(gameboard.battleship);
+                expect(gameboard.board[2][0]).toBe(gameboard.battleship);
+                expect(gameboard.board[3][0]).toBe(gameboard.battleship);
             })
         })
     })
@@ -40,16 +40,16 @@ describe('Gameboard setup', () => {
 
 describe('Gameplay', () => {
     let gameboard;
-    let patrol;
-    let battleship;
     beforeEach(() => {
         gameboard = new Gameboard();
-        patrol = new Ship('Patrol', 2);
-        battleship = new Ship("battleship", 4);
+        // patrol = new Ship('Patrol', 2);
+        // battleship = new Ship("battleship", 4);
     })
     describe('During players attacking phase', () => {
         it('The ship receives an attack and adds 1 to the hit count', () => {
-            
+            // gameboard.placeShip(gameboard.patrol, [0,0]);
+            // gameboard.receiveAttack([0,0]);
+            // expect(patrol.numOfHits).toBe(1);
         })
         // it('Reports on a sinking ship if the ship sinks', () => {
 
