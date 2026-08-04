@@ -16,7 +16,6 @@ describe('Gameboard setup', () => {
     describe('When placing ships', () => {
         describe('Horizontal placement', () => {
             it('places ship by filling in squares on the board with the ships name', () => {
-                // const patrol = new Ship('Patrol', 2);
                 gameboard.placeShip(gameboard.patrol, [0,0]);
                 expect(gameboard.board[0][0]).toBe(gameboard.patrol);
                 expect(gameboard.board[0][1]).toBe(gameboard.patrol);
@@ -42,8 +41,6 @@ describe('Gameplay', () => {
     let gameboard;
     beforeEach(() => {
         gameboard = new Gameboard();
-        // patrol = new Ship('Patrol', 2);
-        // battleship = new Ship("battleship", 4);
     })
     describe('During players attacking phase', () => {
         it('The ship receives an attack and adds 1 to the hit count', () => {

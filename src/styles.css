@@ -10,12 +10,18 @@
 
 }
 
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
-.players-board {
+.players-board,
+.opp-board {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
@@ -29,4 +35,9 @@ body {
     background-color: orange;
     border: 1px solid black;
     cursor: pointer;
+}
+
+.grid-button {
+    height: 40px;
+    
 }
