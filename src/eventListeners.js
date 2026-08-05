@@ -5,7 +5,7 @@ export function draggingOver(e) {
     }
 
 export function clearPreviewCells(previewCells) {
-    previewCells.forEach(cell => cell.classList.remove('slight-scale'));
+    previewCells.forEach(cell => cell.classList.remove('preview'));
     previewCells.length = 0;
 }
 
@@ -22,15 +22,15 @@ export function previewShipPlacement(e, ship, horizontal, previewCells) {
 
         const cell = document.querySelector(`[data-row='${targetRow}'][data-col='${targetCol}']`);
         if (cell) {
-            cell.classList.add('slight-scale');
+            cell.classList.add('preview');
             previewCells.push(cell);
         }
     }
 }
 
 
-export function removeHighlight(e) {
-        e.target.classList.remove('slight-scale');
+export function removePreview(e) {
+        e.target.classList.remove('preview');
     }
 
 export function setDragObject(e, object) {

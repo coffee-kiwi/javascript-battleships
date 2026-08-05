@@ -69,11 +69,11 @@ import * as listeners from './eventListeners.js';
             listeners.previewShipPlacement(e, myShip, currentPlayer.gameboard.horizontalPlacement, previewCells);
         });
 
-        cell.addEventListener("dragleave", listeners.removeHighlight);
+        cell.addEventListener("dragleave", listeners.removePreview);
 
 
         cell.addEventListener("drop", (e) => {
-            listeners.removeHighlight(e);
+            listeners.removePreview(e);
             listeners.clearPreviewCells(previewCells);
             let cellRow = e.target.dataset.row;
             let cellCol = e.target.dataset.col;

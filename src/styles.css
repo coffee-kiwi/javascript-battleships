@@ -46,10 +46,9 @@ body {
     background-color: salmon;
 }
 
-.slight-scale {
+.preview {
     transform: scale(0.95);
     background-color: salmon;
-    /* border-color: salmon; */
 }
 
 .less-opacity {
