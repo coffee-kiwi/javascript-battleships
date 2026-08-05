@@ -19,6 +19,7 @@ import * as listeners from './eventListeners.js';
     let playercells;
     let currentPlayer = player1;
     let shipName;
+    let previewCells = [];
 
     startNewGame();
 
@@ -59,15 +60,25 @@ import * as listeners from './eventListeners.js';
 
     function addCellListeners() {
         playercells = document.querySelectorAll(".grid-cell");
+
         playercells.forEach(cell => {
         cell.addEventListener("dragover", listeners.draggingOver);
-        cell.addEventListener("dragenter", listeners.addHighlight);
+        cell.addEventListener("dragenter", (e) => {
+            if (!shipName) return;
+            const myShip = currentPlayer.gameboard[shipName];
+            listeners.previewShipPlacement(e, myShip, currentPlayer.gameboard.horizontalPlacement, previewCells);
+        });
+
         cell.addEventListener("dragleave", listeners.removeHighlight);
+
+
         cell.addEventListener("drop", (e) => {
             listeners.removeHighlight(e);
+            listeners.clearPreviewCells(previewCells);
             let cellRow = e.target.dataset.row;
             let cellCol = e.target.dataset.col;
             let myShip = currentPlayer.gameboard[shipName];
+
             try {
                 currentPlayer.gameboard.placeShip(myShip, [cellRow, cellCol]);    
             } catch (error) {

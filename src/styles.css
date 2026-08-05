@@ -47,7 +47,9 @@ body {
 }
 
 .slight-scale {
-    transform: scale(1.2);
+    transform: scale(0.95);
+    background-color: salmon;
+    /* border-color: salmon; */
 }
 
 .less-opacity {
