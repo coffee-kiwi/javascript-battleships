@@ -32,7 +32,6 @@ describe('Gameboard setup', () => {
         describe('Vertical placement', () => {
             it('places ship by filling in squares on the board with the ships name', () => {
                 player.gameboard.switchDirection();
-                // const battleship = new Ship('Battleship', 4);
                 player.gameboard.placeShip(player.gameboard.battleship, [0,0]);
                 expect(player.gameboard.board[0][0]).toBe(player.gameboard.battleship);
                 expect(player.gameboard.board[1][0]).toBe(player.gameboard.battleship);

@@ -4,7 +4,6 @@ export function newGame() {
         createOppGrid();
 }
 
-// Can this be used here if player1+player2 are defined elsewhere..?
 export function changePlayer(currentPlayer) {
     currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
 }
@@ -31,7 +30,7 @@ export function createPlayersGrid() {
         console.log(`Button at [${clickedRow}, ${clickedCol}] was clicked!`)
     }
 }
-// opp-board
+
 
 export function createOppGrid() {
     const oppBoard = document.querySelector('.opp-board');

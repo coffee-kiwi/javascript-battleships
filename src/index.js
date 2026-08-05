@@ -68,8 +68,6 @@ import * as listeners from './eventListeners.js';
             let cellRow = e.target.dataset.row;
             let cellCol = e.target.dataset.col;
             let myShip = currentPlayer.gameboard[shipName];
-            // A pre-check must be done to see if it can be placed here or not. 
-            // Function preCheck (currentPlayer.gameboard.board, cellRow, cellCol, myShip.length)
             try {
                 currentPlayer.gameboard.placeShip(myShip, [cellRow, cellCol]);    
             } catch (error) {
