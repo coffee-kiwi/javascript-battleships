@@ -2,7 +2,11 @@
 export function newGame() {
         createPlayersGrid();
         createOppGrid();
-    
+}
+
+// Can this be used here if player1+player2 are defined elsewhere..?
+export function changePlayer(currentPlayer) {
+    currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
 }
 
 export function createPlayersGrid() {
@@ -11,13 +15,13 @@ export function createPlayersGrid() {
     for (let r = 0; r < 10; r++) {
 
         for (let c = 0; c < 10; c++) {
-            const button = document.createElement('button');
-            button.classList.add("grid-button");
-            button.dataset.row = r;
-            button.dataset.col = c;
+            const cell = document.createElement('div');
+            cell.classList.add("grid-cell");
+            cell.dataset.row = r;
+            cell.dataset.col = c;
 
-            button.addEventListener('click', cellClickHandler);
-            playersBoard.appendChild(button);
+            cell.addEventListener('click', cellClickHandler);
+            playersBoard.appendChild(cell);
         }
     }
 
@@ -51,4 +55,5 @@ export function createOppGrid() {
         console.log(`Button at [${clickedRow}, ${clickedCol}] was clicked!`)
     }
 }
+
 
