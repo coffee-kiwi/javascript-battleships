@@ -4,9 +4,9 @@ export function newGame() {
         createOppGrid();
 }
 
-export function changePlayer(currentPlayer) {
-    currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
-}
+// export function changePlayer(player1, player2) {
+//     currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
+// }
 
 export function createPlayersGrid() {
     const playersBoard = document.querySelector('.players-board');
@@ -19,17 +19,19 @@ export function createPlayersGrid() {
             cell.dataset.row = r;
             cell.dataset.col = c;
 
-            cell.addEventListener('click', cellClickHandler);
+            // cell.addEventListener('click', cellClickHandler);
             playersBoard.appendChild(cell);
         }
     }
 
-    function cellClickHandler(event) {
-        let clickedRow = parseInt(event.target.dataset.row, 10);
-        let clickedCol = parseInt(event.target.dataset.col, 10);
-        console.log(`Button at [${clickedRow}, ${clickedCol}] was clicked!`)
-    }
+    // function cellClickHandler(event) {
+    //     let clickedRow = parseInt(event.target.dataset.row, 10);
+    //     let clickedCol = parseInt(event.target.dataset.col, 10);
+    //     console.log(`Button at [${clickedRow}, ${clickedCol}] was clicked!`)
+    // }
 }
+
+
 
 
 export function createOppGrid() {
@@ -55,4 +57,7 @@ export function createOppGrid() {
     }
 }
 
+export function checkSetupFinished(player) {
+    return player.setupShips == 5;
+}
 

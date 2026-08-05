@@ -7,6 +7,9 @@ import * as listeners from './eventListeners.js';
 
     const newGameBtn = document.getElementById('new-game');
     const resetBtn = document.getElementById('reset');
+    const nxtPlayerSetupBtn = document.getElementById('nextPlayerSetup');
+    const startGameBtn = document.getElementById('startGame');
+    const nxtPlayerGameBtn = document.getElementById('nextPLayerGame');
     const toggleBtn = document.getElementById('toggleDir');
     const player1 = new Player("player1");
     const player2 = new Player("player2");
@@ -21,7 +24,28 @@ import * as listeners from './eventListeners.js';
     let shipName;
     let previewCells = [];
 
+
     startNewGame();
+    // After each drop, check if player finished setup. 
+    // If finished, show next player button.
+    
+    // After it's clicked, player changes
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     function startNewGame() {
         playersBoard.textContent = '';
@@ -40,6 +64,10 @@ import * as listeners from './eventListeners.js';
         });
     }
 
+    function changePlayer() {
+       currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
+    }
+
     newGameBtn.addEventListener('click', startNewGame);
 
     resetBtn.addEventListener('click', (e) => {
@@ -55,6 +83,8 @@ import * as listeners from './eventListeners.js';
             toggleBtn.textContent = "Horizontal Placement";
         }
     })
+
+    
 
 
 
@@ -104,11 +134,25 @@ import * as listeners from './eventListeners.js';
                     cellRow++;
                 }
             }
-            console.log(currentPlayer.gameboard.board)
+            currentPlayer.setupShips++;
+            // Run check to see if setup finished
+            if ((player1.setupShips == 5) && (player2.setupShips == 5)) {
+                nxtPlayerBtn.classList.add('invisible');
+                startGameBtn.classList.remove('invisible');
+            } else if (player1.setupShips == 5) {
+                // Make screen blank or with message
+                playersBoard.textContent = '';
+                playersMessage.textContent = 'Pass to the next player and let them click the button below' 
+                nxtPlayerSetupBtn.classList.remove('invisible');
+            }
         });  
     })
     }
-    
+
+    nxtPlayerSetupBtn.addEventListener('click', (e) => {
+        changePlayer();
+        nxtPlayerSetupBtn.classList.add('invisible');
+    });
 
     allShips.forEach(ship => {
         ship.addEventListener('dragstart', (e) => {

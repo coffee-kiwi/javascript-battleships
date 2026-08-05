@@ -16,10 +16,11 @@ describe('Player setup', () => {
 
     it('Resets gameboard', () => {
         player1.gameboard.placeShip(player1.gameboard.carrier, [0,0]);
+        player1.setupShips++;
         expect(player1.gameboard.board[0][0]).toBe(player1.gameboard.carrier);
         player1.resetBoard();
         expect(player1.gameboard.board[0][0]).toBe(null);
+        expect(player1.setupShips).toBe(0);
     })
-
-    
 })
+

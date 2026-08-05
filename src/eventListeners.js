@@ -28,7 +28,6 @@ export function previewShipPlacement(e, ship, horizontal, previewCells) {
     }
 }
 
-
 export function removePreview(e) {
         e.target.classList.remove('preview');
     }
@@ -36,5 +35,6 @@ export function removePreview(e) {
 export function setDragObject(e, object) {
     object = e.target
 }
+
 
 

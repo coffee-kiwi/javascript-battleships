@@ -10,12 +10,12 @@
       <section class="sidebar">
         <button type="button" id="new-game">New Game</button>
                 <!-- Or change these buttons to be pictures of the game pieces? -->
-        <button type="button" id="toggleDir">Horizontal Placement</button>
-        <button type="button" id="carrier" draggable="true">Carrier</button>
-        <button type="button" id="battleship" draggable="true">Battleship</button>
-        <button type="button" id="cruiser" draggable="true">Cruiser</button>
-        <button type="button" id="destroyer" draggable="true">Destroyer</button>
-        <button type="button" id="patrol" draggable="true">Patrol</button>
+        <button type="button" id="toggleDir" >Horizontal Placement</button>
+        <button type="button" id="carrier" class="draggableShips" draggable="true">Carrier</button>
+        <button type="button" id="battleship" class="draggableShips" draggable="true">Battleship</button>
+        <button type="button" id="cruiser" class="draggableShips" draggable="true">Cruiser</button>
+        <button type="button" id="destroyer" class="draggableShips" draggable="true">Destroyer</button>
+        <button type="button" id="patrol" class="draggableShips" draggable="true">Patrol</button>
         <button type="button" id="reset">Reset ship placement</button>
       </section>
 
@@ -29,6 +29,12 @@
         </div>
 
       </section>
+
+      <div class="in-between">
+        <button type="button" id="nextPlayerSetup" class="invisible">Next Player</button>
+        <button type="button" id="startGame" class="invisible">startGame</button>
+        <button type="button" id="nextPlayerGame" class="invisible">Next Player</button>
+      </div>
 
       <section class="opp-view">
         <div class="message-box">

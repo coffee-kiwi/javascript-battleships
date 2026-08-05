@@ -13,11 +13,24 @@
 main {
     display: grid;
     grid-template-columns: 1fr;
+    /* justify-items: center; */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.in-between {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    height: 5vh;
 }
 
 .players-board,
@@ -34,12 +47,13 @@ body {
 .grid-cell {
     background-color: --board-grid-color;
     border: 1px solid black;
-    cursor: pointer;
+    
     height: 40px;
 }
 
 .grid-button {
     height: 40px;
+    cursor: pointer;
 }
 
 .highlight {
