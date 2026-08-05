@@ -4,8 +4,13 @@ export function draggingOver(e) {
         e.preventDefault();
     }
 
-export function addHighlight(e) {
+export function addHighlight(e, ship) {
         e.target.classList.add('slight-scale');
+        // Target all according to ship length
+        let cellRow = e.target.dataset.row;
+        let cellCol = e.target.dataset.col;
+        console.log(e);
+        console.log(shipName);
     }
 
 
@@ -17,7 +22,4 @@ export function setDragObject(e, object) {
     object = e.target
 }
 
-// export function preCheck(board, row, col, length) {
-
-// }
 
