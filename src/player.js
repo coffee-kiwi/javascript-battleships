@@ -2,8 +2,13 @@ import { Gameboard } from './gameboard.js';
 
 export class Player {
 
-    constructor(type) {
-        this.type = type;
+    constructor(name) {
+        this.name = name;
         this.gameboard = new Gameboard();
     }
+
+    resetBoard() {
+    this.gameboard = new Gameboard();
+    }
 }
+

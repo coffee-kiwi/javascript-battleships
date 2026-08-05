@@ -5,12 +5,16 @@ describe('Player setup', () => {
     
     it('Can create player of type human', () => {
         const player = new Player('human');
-        expect(player.type).toBe('human');
+        expect(player.name).toBe('human');
     })
     
     it('Player starts with their own empty gameboard', () => {
         const player = new Player('human');
         expect(player.gameboard).toBeDefined();
+    })
+
+    it('Resets gameboard', () => {
+        // Test for reset function
     })
 
     
