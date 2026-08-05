@@ -21,16 +21,33 @@ export class Gameboard {
     }
 
     placeShip(ship, start) {
-        let row = start[0];
-        let col = start[1];
-
+        let row = parseInt(start[0], 10);
+        let col = parseInt(start[1], 10);
 
         if (this.horizontalPlacement) {
+            if ((col + ship.length) > 10 ) {
+                throw new Error('Ship cannot be placed outside of the board');
+            }
+            for (let i=0; i < ship.length; i++) {
+                if (this.board[row][col + i] != null) {
+                    throw new Error('Ship cannot be placed on another ship')
+                }
+            }
+
             for (let i=0; i < ship.length; i++) {
                 this.board[row][col] = ship
                 col ++;
             }
         } else {
+            if ((row + ship.length) > 10 ) {
+             throw new Error('Ship cannot be placed outside of the board');
+            }
+            for (let i=0; i < ship.length; i++) {
+                if (this.board[row + i][col] != null) {
+                    throw new Error('Ship cannot be placed on another ship')
+                }
+            }
+
             for (let i=0; i < ship.length; i++) {
                 this.board[row][col] = ship
                 row ++;
