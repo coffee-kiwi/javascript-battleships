@@ -5,7 +5,7 @@
         --text-color: #e0e0e0;
         --board-grid-color: lightgrey;
         --cell-border: #333333;
-        --ship-color: #a0aec0;
+        --ship-color: #65a0ec;
     }
 
 }
@@ -32,12 +32,24 @@ body {
 }
 
 .grid-cell {
-    background-color: orange;
+    background-color: --board-grid-color;
     border: 1px solid black;
     cursor: pointer;
+    height: 40px;
 }
 
 .grid-button {
     height: 40px;
-    
+}
+
+.highlight {
+    background-color: salmon;
+}
+
+.slight-scale {
+    transform: scale(1.2);
+}
+
+.less-opacity {
+    opacity: 0.3;
 }
