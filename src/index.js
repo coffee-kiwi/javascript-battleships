@@ -11,8 +11,8 @@ import * as listeners from './eventListeners.js';
     const startGameBtn = document.getElementById('startGame');
     const nxtPlayerGameBtn = document.getElementById('nextPLayerGame');
     const toggleBtn = document.getElementById('toggleDir');
-    const player1 = new Player("player1");
-    const player2 = new Player("player2");
+    const player1 = new Player("Player1");
+    const player2 = new Player("Player2");
     const playersBoard = document.querySelector('.players-board');
     const playersMessage = document.getElementById('players-message');
     const oppBoard = document.querySelector('.opp-board');
@@ -48,8 +48,9 @@ import * as listeners from './eventListeners.js';
     
 
     function startNewGame() {
+        currentPlayer = player1;
         playersBoard.textContent = '';
-        playersMessage.textContent = '';
+        playersMessage.textContent = `${currentPlayer.name} please place your ships`;
         oppBoard.textContent = '';
         oppMessage.textContent = '';
         player1.resetBoard();
@@ -57,12 +58,13 @@ import * as listeners from './eventListeners.js';
 
         play.newGame();
         addCellListeners();
+        play.resetDraggableShips(allShips);
 
-        allShips.forEach(ship => {
-            ship.setAttribute('draggable', 'true');
-            ship.classList.remove('less-opacity');
-        });
+        let nextBtns = document.querySelectorAll('.betweenBtn');
+        nextBtns.forEach(btn => btn.classList.add('invisible'));
     }
+
+
 
     function changePlayer() {
        currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
@@ -115,7 +117,7 @@ import * as listeners from './eventListeners.js';
                 playersMessage.textContent = error.message;
                 return;
             }
-            playersMessage.textContent = '';
+            playersMessage.textContent = `${currentPlayer.name} please place your ships`;
 
             const item = document.getElementById(myShip.name);
             item.removeAttribute('draggable');
@@ -136,22 +138,28 @@ import * as listeners from './eventListeners.js';
             }
             currentPlayer.setupShips++;
             // Run check to see if setup finished
-            if ((player1.setupShips == 5) && (player2.setupShips == 5)) {
-                nxtPlayerBtn.classList.add('invisible');
+            if ((player1.setupShips == true) && (player2.setupShips == 5)) {
+                // nxtPlayerBtn.classList.add('invisible');
                 startGameBtn.classList.remove('invisible');
+                player1.setupShips = true;
             } else if (player1.setupShips == 5) {
                 // Make screen blank or with message
                 playersBoard.textContent = '';
                 playersMessage.textContent = 'Pass to the next player and let them click the button below' 
                 nxtPlayerSetupBtn.classList.remove('invisible');
+                player1.setupShips = true;
             }
         });  
     })
     }
-
+    // Need to set all the drag elements again on draggable ships
     nxtPlayerSetupBtn.addEventListener('click', (e) => {
         changePlayer();
         nxtPlayerSetupBtn.classList.add('invisible');
+        playersMessage.textContent = `${currentPlayer.name} please place your ships`;
+        play.updatePlayersGrid(currentPlayer.gameboard);
+        play.resetDraggableShips(allShips);
+        addCellListeners();
     });
 
     allShips.forEach(ship => {

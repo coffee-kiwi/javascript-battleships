@@ -1,12 +1,16 @@
 
 export function newGame() {
         createPlayersGrid();
-        createOppGrid();
+        // createOppGrid();
 }
 
-// export function changePlayer(player1, player2) {
-//     currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
-// }
+export function resetDraggableShips(allShips) {
+            allShips.forEach(ship => {
+                ship.setAttribute('draggable', 'true');
+                ship.classList.remove('less-opacity');
+        });
+    }
+
 
 export function createPlayersGrid() {
     const playersBoard = document.querySelector('.players-board');
@@ -18,17 +22,26 @@ export function createPlayersGrid() {
             cell.classList.add("grid-cell");
             cell.dataset.row = r;
             cell.dataset.col = c;
-
-            // cell.addEventListener('click', cellClickHandler);
             playersBoard.appendChild(cell);
         }
     }
+}
 
-    // function cellClickHandler(event) {
-    //     let clickedRow = parseInt(event.target.dataset.row, 10);
-    //     let clickedCol = parseInt(event.target.dataset.col, 10);
-    //     console.log(`Button at [${clickedRow}, ${clickedCol}] was clicked!`)
-    // }
+export function updatePlayersGrid(gameboard) {
+    const playersBoard = document.querySelector('.players-board');
+
+    for (let r = 0; r < 10; r++) {
+        for (let c = 0; c < 10; c++) {
+            const cell = document.createElement('div');
+            cell.classList.add('grid-cell');
+            cell.dataset.row = r;
+            cell.dataset.col = c;
+            if (gameboard.board[r][c] != null) {
+                cell.classList.add('highlight');
+            }
+            playersBoard.appendChild(cell);
+        }
+    }
 }
 
 
