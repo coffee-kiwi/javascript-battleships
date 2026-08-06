@@ -1,0 +1,11 @@
+export const newGameBtn = document.getElementById('new-game');
+export const resetBtn = document.getElementById('reset');
+export const nxtPlayerSetupBtn = document.getElementById('nextPlayerSetup');
+export const startGameBtn = document.getElementById('startGame');
+export const nxtPlayerGameBtn = document.getElementById('nextPLayerGame');
+export const toggleBtn = document.getElementById('toggleDir');
+export const playersBoard = document.querySelector('.players-board');
+export const playersMessage = document.getElementById('players-message');
+export const oppBoard = document.querySelector('.opp-board');
+export const oppMessage = document.getElementById('opps-message');
+export const allShips = document.querySelectorAll('[draggable="true"]');
