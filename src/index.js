@@ -1,5 +1,5 @@
 import './styles.css'
-import * as play from './playBattleships.js';
+import * as setup from './setup.js';
 import { newGameBtn, resetBtn, toggleBtn, nxtPlayerSetupBtn, startGameBtn,
         playersBoard, playersMessage, oppBoard, allShips } from './domElements.js';
 import { player1, player2, getCurrentPlayer, changePlayer } from './gameState.js';
@@ -28,9 +28,9 @@ function startNewGame() {
     player1.resetBoard();
     player2.resetBoard();
 
-    play.newGame();
+    setup.newGame();
     addCellListeners(checkSetupProgress);
-    play.resetDraggableShips(allShips);
+    setup.resetDraggableShips(allShips);
 
     document.querySelectorAll('.betweenBtn').forEach(btn => btn.classList.add('invisible'));
 }
@@ -41,8 +41,15 @@ addShipDragListeners(allShips);
 newGameBtn.addEventListener('click', startNewGame);
 
 resetBtn.addEventListener('click', () => {
-    getCurrentPlayer().resetBoard();
-    startNewGame();
+    const currentPlayer = getCurrentPlayer();
+    currentPlayer.resetBoard();
+    playersBoard.textContent = '';
+    setup.resetDraggableShips(allShips);
+    // We need to clear the cells on current gameboard (or update them):
+    setup.updatePlayersGrid(currentPlayer.gameboard);
+    addCellListeners(checkSetupProgress);
+    toggleBtn.textContent = 'Horizontal Placement';
+    // startNewGame();
 });
 
 toggleBtn.addEventListener('click', () => {
@@ -58,7 +65,7 @@ nxtPlayerSetupBtn.addEventListener('click', () => {
     const currentPlayer = getCurrentPlayer();
     nxtPlayerSetupBtn.classList.add('invisible');
     playersMessage.textContent = `${currentPlayer.name} please place your ships`;
-    play.updatePlayersGrid(currentPlayer.gameboard);
-    play.resetDraggableShips(allShips);
+    setup.updatePlayersGrid(currentPlayer.gameboard);
+    setup.resetDraggableShips(allShips);
     addCellListeners(checkSetupProgress);
 });
