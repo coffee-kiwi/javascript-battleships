@@ -1,7 +1,6 @@
 
 export function newGame() {
         createPlayersGrid();
-        // createOppGrid();
 }
 
 export function resetDraggableShips(allShips) {
@@ -43,8 +42,6 @@ export function updatePlayersGrid(gameboard) {
         }
     }
 }
-
-
 
 
 export function createOppGrid() {
