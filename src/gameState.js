@@ -6,6 +6,7 @@ export const player2 = new Player("Player2");
 const state = {
     currentPlayer: player1,
     shipName: null,
+    // opponent: player2,
 };
 
 export const previewCells = [];
@@ -16,6 +17,11 @@ export function getCurrentPlayer() {
 
 export function changePlayer() {
     state.currentPlayer = state.currentPlayer === player1 ? player2 : player1;
+}
+
+export function getOpponent() {
+    return (state.currentPlayer === player1) ? player2 : player1;
+   
 }
 
 export function getShipName() {

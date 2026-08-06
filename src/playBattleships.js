@@ -66,8 +66,3 @@ export function createOppGrid() {
         console.log(`Button at [${clickedRow}, ${clickedCol}] was clicked!`)
     }
 }
-
-export function checkSetupFinished(player) {
-    return player.setupShips == 5;
-}
-
