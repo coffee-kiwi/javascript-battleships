@@ -1,8 +1,9 @@
 export const newGameBtn = document.getElementById('new-game');
 export const resetBtn = document.getElementById('reset');
-export const nxtPlayerSetupBtn = document.getElementById('nextPlayerSetup');
+export const nextPlayerSetupBtn = document.getElementById('nextPlayerSetup');
 export const startGameBtn = document.getElementById('startGame');
-export const nxtPlayerGameBtn = document.getElementById('nextPLayerGame');
+export const nextTurnBtn = document.getElementById('nextTurn');
+export const passingBtn = document.getElementById('passing');
 export const toggleBtn = document.getElementById('toggleDir');
 export const playersBoard = document.querySelector('.players-board');
 export const playersMessage = document.getElementById('players-message');

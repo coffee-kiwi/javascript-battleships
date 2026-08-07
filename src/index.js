@@ -1,19 +1,24 @@
 import './styles.css'
 import * as setup from './setup.js';
-import { newGameBtn, resetBtn, toggleBtn, nxtPlayerSetupBtn, startGameBtn,
-        playersBoard, playersMessage, oppBoard, allShips } from './domElements.js';
-import { player1, player2, getCurrentPlayer, changePlayer } from './gameState.js';
+import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn,
+        playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn } from './domElements.js';
+import { player1, player2, getCurrentPlayer, changePlayer, setTurnFinished } from './gameState.js';
 import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
+import { playGame, nextTurn, waitingScreen } from './gameplay.js';
 
 function checkSetupProgress() {
     const currentPlayer = getCurrentPlayer();
 
     if (player1.setupShips === 5 && player2.setupShips === 5) {
-        startGameBtn.classList.remove('invisible');
+        nextPlayerSetupBtn.classList.add('gone');
+        startGameBtn.classList.remove('invisible', 'gone');
+        playersBoard.textContent = '';
+        playersMessage.textContent = 'Pass to the next player and let them click the button below'; 
+        startGameBtn.addEventListener('click', playGame);
     } else if (currentPlayer.setupShips === 5) {
         playersBoard.textContent = '';
         playersMessage.textContent = 'Pass to the next player and let them click the button below' 
-        nxtPlayerSetupBtn.classList.remove('invisible');
+        nextPlayerSetupBtn.classList.remove('invisible');
     } else {
         playersMessage.textContent = `${currentPlayer.name} please place your ships`;
     }
@@ -58,12 +63,29 @@ toggleBtn.addEventListener('click', () => {
         : 'Vertical Placement';
 })
 
-nxtPlayerSetupBtn.addEventListener('click', () => {
+nextPlayerSetupBtn.addEventListener('click', () => {
     changePlayer();
     const currentPlayer = getCurrentPlayer();
-    nxtPlayerSetupBtn.classList.add('invisible');
+    nextPlayerSetupBtn.classList.add('invisible');
     playersMessage.textContent = `${currentPlayer.name} please place your ships`;
     setup.updatePlayersGrid(currentPlayer.gameboard);
     setup.resetDraggableShips(allShips);
     addCellListeners(checkSetupProgress);
 });
+
+passingBtn.addEventListener('click', () => {
+    waitingScreen();
+
+})
+
+nextTurnBtn.addEventListener('click', () => {
+    nextTurn();
+    // changePlayer();
+    // setTurnFinished(false);
+    // const currentPlayer = getCurrentPlayer();
+    // const opponent = getOpponent();
+    // setup.updateOppGrid(opponent.gameboard);
+    // setup.updatePlayersGrid(currentPlayer.gameboard);
+    // playersMessage.textContent = 'Choose a square'
+
+})

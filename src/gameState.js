@@ -7,6 +7,7 @@ const state = {
     currentPlayer: player1,
     shipName: null,
     opponent: player2,
+    turnFinished: false,
 };
 
 export const previewCells = [];
@@ -31,4 +32,12 @@ export function getShipName() {
 
 export function setShipName(name) {
     state.shipName = name;
+}
+
+export function getTurnFinished() {
+    return state.turnFinished;
+}
+
+export function setTurnFinished(boolean) {
+    state.turnFinished = boolean;
 }
