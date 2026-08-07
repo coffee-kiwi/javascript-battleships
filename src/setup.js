@@ -71,7 +71,12 @@ function cellClickHandler(event) {
     let clickedCol = parseInt(event.target.dataset.col, 10);
     opponent.gameboard.receiveAttack([clickedRow, clickedCol]);
     oppBoard.textContent = '';
-    playersMessage.textContent = 'Click the next player button below and pass to the next player';
+    if (opponent.gameboard[clickedRow, clickedCol] === 1) {
+        playersMessage.textContent = 'Its a hit!';
+    } else {
+        playersMessage.textContent = 'Nothing there but fish';
+    }
+    // playersMessage.textContent = 'Click the button below when you are ready';
     setTurnFinished(true);
     updateOppGrid(opponent.gameboard);
     passingBtn.classList.remove('invisible', 'gone');

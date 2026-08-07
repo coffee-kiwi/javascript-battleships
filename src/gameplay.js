@@ -20,7 +20,7 @@ export function playGame() {
 export function waitingScreen() {
     playersBoard.textContent = '';
     oppBoard.textContent = '';
-    playersMessage.textContent = 'Click the button below to start your turn.';
+    playersMessage.textContent = 'Pass to the next player. Click the button below to start your turn.';
     passingBtn.classList.add('invisible', 'gone');
     nextTurnBtn.classList.remove('invisible', 'gone')
 }
