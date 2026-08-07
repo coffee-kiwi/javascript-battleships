@@ -6,6 +6,7 @@ export class Player {
         this.name = name;
         this.gameboard = new Gameboard();
         this.setupShips = 0;
+        this.points = 0;
         // this.turnFinished = false;
     }
 
@@ -13,9 +14,6 @@ export class Player {
     this.gameboard = new Gameboard();
     this.setupShips = 0;
     }
-
-    // resetTurn() {
-    //     this.turnFinished = false;
-    // }
+    
 }
 

@@ -17,6 +17,7 @@ export class Ship {
         if (this.numOfHits == this.length) {
             this.sunk = true;
         }
+
     }
 
 }

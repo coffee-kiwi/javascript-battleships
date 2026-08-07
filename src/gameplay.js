@@ -5,13 +5,10 @@ import { getTurnFinished, getCurrentPlayer, changePlayer, getOpponent, setTurnFi
 import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
 
 export function playGame() {
-    // Render opponents board
     changePlayer();
     const currentPlayer = getCurrentPlayer();
     setup.createOppGrid();
-    // Render updated player's board
     setup.updatePlayersGrid(currentPlayer.gameboard);
-    // Add message/instructions, show board, remove button.
     playersMessage.textContent = `${currentPlayer.name} choose a square`;
     startGameBtn.classList.add('invisible', 'gone');
     oppBoard.classList.remove('invisible');
@@ -39,3 +36,8 @@ export function nextTurn() {
     playersMessage.textContent = `${currentPlayer.name} choose a square`
 }
 
+export function isGameFinished () {
+    const currentPlayer = getCurrentPlayer();
+    console.log(currentPlayer);
+    return currentPlayer.points == 5;
+}

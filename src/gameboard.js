@@ -1,4 +1,6 @@
 import { Ship } from './ship.js'
+import { getCurrentPlayer } from './gameState.js';
+import { playersMessage } from './domElements.js';
 
 export class Gameboard {
 
@@ -62,18 +64,16 @@ export class Gameboard {
 
         if (square instanceof Ship) {
             square.hit();
-            if (square.isSunk()) {
-                console.log("Opponent's ship has been sunk!")
-                // Add any other necessary message
+            square.isSunk();
+            if (square.sunk) {
+                const player = getCurrentPlayer();
+                player.points++;
+                playersMessage.textContent = 'The ship has been sunk!';
             }
             this.board[row][col] = 1;
 
-        } else if (square == 1) {
-            console.log('Square has already been hit');
-            // Throw error or ask to rerun function?
         } else {
             this.board[row][col] = 0;
-            // It's a miss. Show message ans switch to next player?
         }
             
     }

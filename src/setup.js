@@ -1,8 +1,9 @@
-import { getOpponent, getTurnFinished, setTurnFinished } from './gameState.js';
-import { receiveAttack } from './gameboard.js';
+import { getCurrentPlayer, getOpponent, getTurnFinished, setTurnFinished } from './gameState.js';
+import { receiveAttack, isSunk } from './gameboard.js';
 // import { oppBoard, nextTurnBtn } from './domElements.js';
 import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn,
         playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn } from './domElements.js';
+import { isGameFinished } from './gameplay.js';
 
 export function newGame() {
         createPlayersGrid();
@@ -67,12 +68,21 @@ export function createOppGrid() {
 
 function cellClickHandler(event) {
     const opponent = getOpponent();
+    const currentPlayer = getCurrentPlayer();
     let clickedRow = parseInt(event.target.dataset.row, 10);
     let clickedCol = parseInt(event.target.dataset.col, 10);
     opponent.gameboard.receiveAttack([clickedRow, clickedCol]);
     oppBoard.textContent = '';
-    if (opponent.gameboard[clickedRow, clickedCol] === 1) {
-        playersMessage.textContent = 'Its a hit!';
+
+    //     if (opponent.gameboard[clickedRow, clickedCol].isSunk()) {
+    //     const player = getCurrentPlayer();
+    //     player.points++;
+    //     playersBoard.textContent = 'The ship has been sunk!';
+    // }
+    if (opponent.gameboard.board[clickedRow][clickedCol] === 1) {
+        if (playersMessage.textContent !== 'The ship has been sunk!') {
+            playersMessage.textContent = 'Its a hit!';
+        }
     } else {
         playersMessage.textContent = 'Nothing there but fish';
     }
@@ -80,6 +90,11 @@ function cellClickHandler(event) {
     setTurnFinished(true);
     updateOppGrid(opponent.gameboard);
     passingBtn.classList.remove('invisible', 'gone');
+
+    if (isGameFinished()) {
+        playersMessage.textContent = `${currentPlayer.name} is the winner!`       
+    }
+
 }
 
 export function updateOppGrid(gameboard) {
@@ -96,11 +111,13 @@ export function updateOppGrid(gameboard) {
                 button.textContent = 'X'
             } else if (gameboard.board[r][c] === 1) {
                 button.textContent = 'O';
-            } 
-
-            if (!getTurnFinished()) {
+            } else if (!getTurnFinished()) {
                 button.addEventListener('click', cellClickHandler);
             }
+            // Only add cellClick if the square has not already been targeted.
+            // if (!getTurnFinished()) {
+            //     button.addEventListener('click', cellClickHandler);
+            // }
 
             playersBoard.appendChild(button);
         }
