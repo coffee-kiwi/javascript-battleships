@@ -6,6 +6,9 @@ describe('Returns getters for the players', () => {
     beforeEach(() => {
         player1 = new Player('Player1');
         player2 = new Player('Player2');
+        if (getCurrentPlayer() === player2) {
+            changePlayer();
+        }
     })
 
     it('Returns current player correctly', () => {
@@ -15,11 +18,12 @@ describe('Returns getters for the players', () => {
     it('Changes player and returns current player correctly', () => {
         changePlayer();
         expect(getCurrentPlayer()).toEqual(player2);
-        changePlayer(); // reset state to player1
+        expect(getOpponent()).toEqual(player1);
+        // changePlayer(); // reset state to player1
     })
 
     it('Returns the opponent correctly', () => {
         // changePlayer();
-        expect(getOpponent()).toEqual(player2);
+        expect(getOpponent()).toEqual(player1);
     })
 })

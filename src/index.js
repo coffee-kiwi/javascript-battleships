@@ -45,11 +45,9 @@ resetBtn.addEventListener('click', () => {
     currentPlayer.resetBoard();
     playersBoard.textContent = '';
     setup.resetDraggableShips(allShips);
-    // We need to clear the cells on current gameboard (or update them):
     setup.updatePlayersGrid(currentPlayer.gameboard);
     addCellListeners(checkSetupProgress);
     toggleBtn.textContent = 'Horizontal Placement';
-    // startNewGame();
 });
 
 toggleBtn.addEventListener('click', () => {
