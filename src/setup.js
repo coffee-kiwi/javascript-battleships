@@ -1,8 +1,6 @@
 import { getCurrentPlayer, getOpponent, getTurnFinished, setTurnFinished } from './gameState.js';
 import { receiveAttack, isSunk } from './gameboard.js';
-// import { oppBoard, nextTurnBtn } from './domElements.js';
-import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn,
-        playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn } from './domElements.js';
+import { playersBoard, playersMessage, oppBoard, passingBtn } from './domElements.js';
 import { isGameFinished } from './gameplay.js';
 
 export function newGame() {
