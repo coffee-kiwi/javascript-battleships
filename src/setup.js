@@ -6,7 +6,8 @@ import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn,
 import { isGameFinished } from './gameplay.js';
 
 export function newGame() {
-        createPlayersGrid();
+    const currentPlayer = getCurrentPlayer();
+    updatePlayersGrid(currentPlayer.gameboard);
 }
 
 export function resetDraggableShips(allShips) {
@@ -15,22 +16,6 @@ export function resetDraggableShips(allShips) {
                 ship.classList.remove('less-opacity');
         });
     }
-
-
-export function createPlayersGrid() {
-    const playersBoard = document.querySelector('.players-board');
-
-    for (let r = 0; r < 10; r++) {
-
-        for (let c = 0; c < 10; c++) {
-            const cell = document.createElement('div');
-            cell.classList.add("grid-cell");
-            cell.dataset.row = r;
-            cell.dataset.col = c;
-            playersBoard.appendChild(cell);
-        }
-    }
-}
 
 export function updatePlayersGrid(gameboard) {
     const playersBoard = document.querySelector('.players-board');
@@ -54,7 +39,6 @@ export function updatePlayersGrid(gameboard) {
         }
     }
 }
-
 
 export function createOppGrid() {
     const oppBoard = document.querySelector('.opp-board');
@@ -80,11 +64,6 @@ function cellClickHandler(event) {
     opponent.gameboard.receiveAttack([clickedRow, clickedCol]);
     oppBoard.textContent = '';
 
-    //     if (opponent.gameboard[clickedRow, clickedCol].isSunk()) {
-    //     const player = getCurrentPlayer();
-    //     player.points++;
-    //     playersBoard.textContent = 'The ship has been sunk!';
-    // }
     if (opponent.gameboard.board[clickedRow][clickedCol] === 1) {
         if (playersMessage.textContent !== 'The ship has been sunk!') {
             playersMessage.textContent = 'Its a hit!';
@@ -92,7 +71,7 @@ function cellClickHandler(event) {
     } else {
         playersMessage.textContent = 'Nothing there but fish';
     }
-    // playersMessage.textContent = 'Click the button below when you are ready';
+    
     setTurnFinished(true);
     updateOppGrid(opponent.gameboard);
     passingBtn.classList.remove('invisible', 'gone');
@@ -100,10 +79,9 @@ function cellClickHandler(event) {
     if (isGameFinished()) {
         playersMessage.textContent = `${currentPlayer.name} is the winner!`
         playersBoard.textContent = '';
+        oppBoard.textContent = '';
         passingBtn.classList.add('gone');
         updatePlayersGrid(opponent.gameboard);
-        const space = document.createElement('br');
-        playersBoard.appendChild(space);
         updatePlayersGrid(currentPlayer.gameboard);      
     }
 
