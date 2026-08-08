@@ -1,6 +1,5 @@
 import * as setup from './setup.js';
-import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn,
-        playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn } from './domElements.js';
+import { startGameBtn, playersBoard, playersMessage, oppBoard, nextTurnBtn, passingBtn, bottomTitle } from './domElements.js';
 import { getTurnFinished, getCurrentPlayer, changePlayer, getOpponent, setTurnFinished } from './gameState.js';
 import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
 
@@ -9,19 +8,20 @@ export function playGame() {
     const currentPlayer = getCurrentPlayer();
     const opponent = getOpponent();
     setup.updateOppGrid(opponent.gameboard);
-    // setup.createOppGrid();
     setup.updatePlayersGrid(currentPlayer.gameboard);
     playersMessage.textContent = `${currentPlayer.name} choose a square`;
-    startGameBtn.classList.add('invisible', 'gone');
+    startGameBtn.classList.add('gone');
     oppBoard.classList.remove('invisible');
+    bottomTitle.classList.remove('gone');
 }
 
 export function waitingScreen() {
     playersBoard.textContent = '';
     oppBoard.textContent = '';
     playersMessage.textContent = 'Pass to the next player. Click the button below to start your turn.';
-    passingBtn.classList.add('invisible', 'gone');
-    nextTurnBtn.classList.remove('invisible', 'gone')
+    passingBtn.classList.add('gone');
+    bottomTitle.classList.add('gone');
+    nextTurnBtn.classList.remove('gone')
 }
 
 export function nextTurn() {
@@ -32,7 +32,8 @@ export function nextTurn() {
     const opponent = getOpponent();
     playersBoard.textContent = '';
     oppBoard.textContent = '';
-    nextTurnBtn.classList.add('invisible', 'gone');
+    nextTurnBtn.classList.add('gone');
+    bottomTitle.classList.remove('gone');
     setup.updateOppGrid(opponent.gameboard);
     setup.updatePlayersGrid(currentPlayer.gameboard);
     playersMessage.textContent = `${currentPlayer.name} choose a square`

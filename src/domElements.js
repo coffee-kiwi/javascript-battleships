@@ -10,3 +10,4 @@ export const playersMessage = document.getElementById('players-message');
 export const oppBoard = document.querySelector('.opp-board');
 export const oppMessage = document.getElementById('opps-message');
 export const allShips = document.querySelectorAll('[draggable="true"]');
+export const bottomTitle = document.getElementById('bottom-title');

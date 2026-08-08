@@ -56,7 +56,7 @@ function cellClickHandler(event) {
     
     setTurnFinished(true);
     updateOppGrid(opponent.gameboard);
-    passingBtn.classList.remove('invisible', 'gone');
+    passingBtn.classList.remove('gone');
 
     if (isGameFinished()) {
         playersMessage.textContent = `${currentPlayer.name} is the winner!`
