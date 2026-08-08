@@ -41,9 +41,15 @@ export function updatePlayersGrid(gameboard) {
             cell.classList.add('grid-cell');
             cell.dataset.row = r;
             cell.dataset.col = c;
-            if (gameboard.board[r][c] != null) {
+            if (gameboard.board[r][c] === 0) {
+                cell.textContent = "X";
+            } else if (gameboard.board[r][c] === 1) {
+                cell.textContent = "O";
+                cell.classList.add('highlight');
+            } else if (gameboard.board[r][c] !== null) {
                 cell.classList.add('highlight');
             }
+
             playersBoard.appendChild(cell);
         }
     }
