@@ -98,7 +98,13 @@ function cellClickHandler(event) {
     passingBtn.classList.remove('invisible', 'gone');
 
     if (isGameFinished()) {
-        playersMessage.textContent = `${currentPlayer.name} is the winner!`       
+        playersMessage.textContent = `${currentPlayer.name} is the winner!`
+        playersBoard.textContent = '';
+        passingBtn.classList.add('gone');
+        updatePlayersGrid(opponent.gameboard);
+        const space = document.createElement('br');
+        playersBoard.appendChild(space);
+        updatePlayersGrid(currentPlayer.gameboard);      
     }
 
 }
