@@ -40,22 +40,6 @@ export function updatePlayersGrid(gameboard) {
     }
 }
 
-export function createOppGrid() {
-    const oppBoard = document.querySelector('.opp-board');
-
-    for (let r = 0; r < 10; r++) {
-        for (let c = 0; c < 10; c++) {
-            const button = document.createElement('button');
-            button.classList.add("grid-button");
-            button.dataset.row = r;
-            button.dataset.col = c;
-
-            button.addEventListener('click', cellClickHandler);
-            oppBoard.appendChild(button);
-        }
-    }
-}
-
 function cellClickHandler(event) {
     const opponent = getOpponent();
     const currentPlayer = getCurrentPlayer();
@@ -104,10 +88,6 @@ export function updateOppGrid(gameboard) {
             } else if (!getTurnFinished()) {
                 button.addEventListener('click', cellClickHandler);
             }
-            // Only add cellClick if the square has not already been targeted.
-            // if (!getTurnFinished()) {
-            //     button.addEventListener('click', cellClickHandler);
-            // }
 
             playersBoard.appendChild(button);
         }

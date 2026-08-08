@@ -7,7 +7,9 @@ import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
 export function playGame() {
     changePlayer();
     const currentPlayer = getCurrentPlayer();
-    setup.createOppGrid();
+    const opponent = getOpponent();
+    setup.updateOppGrid(opponent.gameboard);
+    // setup.createOppGrid();
     setup.updatePlayersGrid(currentPlayer.gameboard);
     playersMessage.textContent = `${currentPlayer.name} choose a square`;
     startGameBtn.classList.add('invisible', 'gone');
