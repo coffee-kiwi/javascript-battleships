@@ -6,6 +6,7 @@ export const player2 = new Player("Player2");
 const state = {
     currentPlayer: player1,
     shipName: null,
+    shipColor: null,
     opponent: player2,
     turnFinished: false,
 };
@@ -32,6 +33,14 @@ export function getShipName() {
 
 export function setShipName(name) {
     state.shipName = name;
+}
+
+export function getShipColor() {
+    return state.shipColor;
+}
+
+export function setShipColor(color) {
+    state.shipColor = color;
 }
 
 export function getTurnFinished() {
