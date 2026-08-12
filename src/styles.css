@@ -25,10 +25,29 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
+
+.sidebar button {
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    margin: 4px;
+    background-color: #65a0ec;
+}
+
+.draggableShipsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+    gap: 8px;
+    margin: 4px;
+    padding: 4px;
+}
+
 .draggableShipsContainer div {
-    display: flex;
+    display: flex; 
     justify-content: center;
     align-items: center;
+    color: #121212;
+    /* flex-wrap: nowrap; */
 }
 
 div #carrier,
@@ -36,7 +55,7 @@ div #battleship,
 div #cruiser,
 div #destroyer,
 div #patrol {
-    width: clamp(75px, 1vw + 1rem, 250px);
+    /* width: clamp(75px, 1vw + 1rem, 250px); */
     background-color: var(--carrier-color);
     height: auto;
     border: none;
