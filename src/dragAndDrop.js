@@ -1,6 +1,6 @@
 import * as listeners from './eventListeners.js';
 import { playersMessage } from './domElements.js';
-import { getCurrentPlayer, getShipName, setShipName, previewCells } from './gameState.js';
+import { getCurrentPlayer, getShipName, setShipName, getShipColor, setShipColor, previewCells } from './gameState.js';
 
 export function addCellListeners(checkSetupProgress) {
     const playercells = document.querySelectorAll('.grid-cell');
@@ -62,6 +62,7 @@ export function addShipDragListeners(allShips) {
     allShips.forEach(ship => {
         ship.addEventListener('dragstart', (e) => {
             setShipName(e.target.id);
+            setShipColor(getComputedStyle(e.target).backgroundColor)
         });
     })
 }
