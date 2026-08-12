@@ -24,7 +24,7 @@ export function previewShipPlacement(e, ship, horizontal, previewCells, color) {
         if (targetRow > 9 || targetCol > 9) break;
 
         const cell = document.querySelector(`[data-row='${targetRow}'][data-col='${targetCol}']`);
-        if (cell) {
+        if (cell && !cell.classList.contains('highlight')) {
             cell.classList.add('preview');
             cell.style.backgroundColor = color;
             previewCells.push(cell);
@@ -33,8 +33,14 @@ export function previewShipPlacement(e, ship, horizontal, previewCells, color) {
 }
 
 export function removePreview(e) {
+    const row = parseInt(e.target.dataset.row, 10);
+    const col = parseInt(e.target.dataset.col, 10);
+    const cell = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
+    if (cell === null) {
         e.target.classList.remove('preview');
         e.target.style.backgroundColor = '';
+    }
+        
     }
 
 export function setDragObject(e, object) {
