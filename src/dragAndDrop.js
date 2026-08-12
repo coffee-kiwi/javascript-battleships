@@ -12,7 +12,8 @@ export function addCellListeners(checkSetupProgress) {
             if (!shipName) return;
             const currentPlayer = getCurrentPlayer();
             const myShip = currentPlayer.gameboard[shipName];
-            listeners.previewShipPlacement(e, myShip, currentPlayer.gameboard.horizontalPlacement, previewCells);
+            const color = getShipColor();
+            listeners.previewShipPlacement(e, myShip, currentPlayer.gameboard.horizontalPlacement, previewCells, color);
         });
 
         cell.addEventListener("dragleave", listeners.removePreview);
@@ -23,6 +24,7 @@ export function addCellListeners(checkSetupProgress) {
 
             const currentPlayer = getCurrentPlayer();
             const shipName = getShipName();
+            const shipColor = getShipColor();
             let cellRow = e.target.dataset.row;
             let cellCol = e.target.dataset.col;
             let myShip = currentPlayer.gameboard[shipName];
@@ -43,12 +45,14 @@ export function addCellListeners(checkSetupProgress) {
                 for (let i = 0; i < myShip.length; i++ ) {
                     const thisCell = document.querySelector(`[data-row='${cellRow}'][data-col='${cellCol}']`);
                     thisCell.classList.add("highlight");
+                    thisCell.style.backgroundColor = shipColor;
                     cellCol++;
                 }
             } else {
                 for (let i = 0; i < myShip.length; i++ ) {
                     const thisCell = document.querySelector(`[data-row='${cellRow}'][data-col='${cellCol}']`);
                     thisCell.classList.add("highlight");
+                    thisCell.style.backgroundColor = shipColor;
                     cellRow++;
                 }
             }
