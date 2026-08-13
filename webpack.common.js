@@ -23,6 +23,7 @@ export default {
     filename: "main.bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+    publicPath: '/javascript-battleships/',
   },
   module: {
     rules: [
