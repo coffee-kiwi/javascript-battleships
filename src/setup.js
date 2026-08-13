@@ -101,13 +101,13 @@ export function updateOppGrid(gameboard) {
         }
     }
 
-    const customCursor = "url('../images/aim.png'), auto";
-    oppBoard.addEventListener('mouseenter', () => {
-        button.style.cursor = customCursor;
-    });
-    oppboard.addEventListener('mouseleave', () => {
-        button.style.cursor = 'default';
-    })
+    // const customCursor = "url('../images/aim.png'), auto";
+    // oppBoard.addEventListener('mouseenter', () => {
+    //     button.style.cursor = customCursor;
+    // });
+    // oppBoard.addEventListener('mouseleave', () => {
+    //     button.style.cursor = 'default';
+    // })
 
 
 }
