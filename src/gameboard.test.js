@@ -59,6 +59,12 @@ describe('Gameplay', () => {
             gameboard.receiveAttack([0,0]);
             expect(gameboard.patrol.numOfHits).toBe(0);
         })
+
+        it('stores the ship name on the board after a hit, for later reference', () => {
+            gameboard.placeShip(gameboard.patrol, [0, 0]);
+            gameboard.receiveAttack([0, 0]);
+            expect(gameboard.board[0][0].shipName).toBe('patrol');
+        });
     })
 })
 

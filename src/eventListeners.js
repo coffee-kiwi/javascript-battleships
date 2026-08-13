@@ -24,7 +24,7 @@ export function previewShipPlacement(e, ship, horizontal, previewCells, color) {
         if (targetRow > 9 || targetCol > 9) break;
 
         const cell = document.querySelector(`[data-row='${targetRow}'][data-col='${targetCol}']`);
-        if (cell && !cell.classList.contains('highlight')) {
+        if (cell && !cell.classList.contains('highlighted')) {
             cell.classList.add('preview');
             cell.style.backgroundColor = color;
             previewCells.push(cell);

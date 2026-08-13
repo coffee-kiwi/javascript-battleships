@@ -8,6 +8,12 @@ export function newGame() {
     updatePlayersGrid(currentPlayer.gameboard);
 }
 
+
+function getShipColorByName(name) {
+    const thisShip = document.getElementById(name);
+    return thisShip ? getComputedStyle(thisShip).backgroundColor : '';
+}
+
 export function resetDraggableShips(allShips) {
             allShips.forEach(ship => {
                 ship.setAttribute('draggable', 'true');
@@ -24,32 +30,16 @@ export function updatePlayersGrid(gameboard) {
             cell.classList.add('grid-cell');
             cell.dataset.row = r;
             cell.dataset.col = c;
-            if (gameboard.board[r][c] === 0) {
+            const square = gameboard.board[r][c];
+            if (square === 0) {
                 cell.textContent = "X";
-            } else if (gameboard.board[r][c] === 1) {
+            } else if (square && square.hit) {
                 cell.textContent = "O";
-                cell.classList.add('highlight');
-            } else if (gameboard.board[r][c] !== null) {
-                switch (gameboard.board[r][c].name) {
-                    case 'carrier':
-                        cell.style.backgroundColor = '--carrier-color';
-                        break;
-                    case 'battleship':
-                        cell.style.backgroundColor = '--battleship-color';
-                        break;
-                    case 'cruiser':
-                        cell.style.backgroundColor = '--cruiser-color';
-                        break;
-                    case 'destroyer':
-                        cell.style.backgroundColor = '--destroyer-color';
-                        break;
-                    case 'patrol':
-                        cell.style.backgroundColor = '--patrol-color';
-                        break;    
-                    // default:
-                    //     break;
-                }
-                // cell.style.backgroundColor = 'lightblue';
+                cell.classList.add('highlighted');
+                cell.style.backgroundColor = getShipColorByName(gameboard.board[r][c].name);
+            } else if (square !== null) {
+                cell.classList.add('highlighted');
+                cell.style.backgroundColor = getShipColorByName(gameboard.board[r][c].name);
             }
 
             playersBoard.appendChild(cell);
@@ -65,7 +55,7 @@ function cellClickHandler(event) {
     opponent.gameboard.receiveAttack([clickedRow, clickedCol]);
     oppBoard.textContent = '';
 
-    if (opponent.gameboard.board[clickedRow][clickedCol] === 1) {
+    if (opponent.gameboard.board[clickedRow][clickedCol].hit) {
         if (playersMessage.textContent !== 'The ship has been sunk!') {
             playersMessage.textContent = 'Its a hit!';
         }
@@ -98,9 +88,10 @@ export function updateOppGrid(gameboard) {
             button.classList.add('grid-button');
             button.dataset.row = r;
             button.dataset.col = c;
-            if (gameboard.board[r][c] === 0) {
+            const square = gameboard.board[r][c];
+            if (square === 0) {
                 button.textContent = 'X'
-            } else if (gameboard.board[r][c] === 1) {
+            } else if (square && square.hit) {
                 button.textContent = 'O';
             } else if (!getTurnFinished()) {
                 button.addEventListener('click', cellClickHandler);

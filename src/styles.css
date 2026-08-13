@@ -190,3 +190,8 @@ div #patrol {
 .less-opacity {
     opacity: 0.3;
 }
+
+.highlighted {
+    /* This class prevents colors being
+    overwritten when dragging new ships */
+}

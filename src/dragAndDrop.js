@@ -44,14 +44,14 @@ export function addCellListeners(checkSetupProgress) {
             if (currentPlayer.gameboard.horizontalPlacement) {
                 for (let i = 0; i < myShip.length; i++ ) {
                     const thisCell = document.querySelector(`[data-row='${cellRow}'][data-col='${cellCol}']`);
-                    thisCell.classList.add("highlight");
+                    thisCell.classList.add("highlighted");
                     thisCell.style.backgroundColor = shipColor;
                     cellCol++;
                 }
             } else {
                 for (let i = 0; i < myShip.length; i++ ) {
                     const thisCell = document.querySelector(`[data-row='${cellRow}'][data-col='${cellCol}']`);
-                    thisCell.classList.add("highlight");
+                    thisCell.classList.add("highlighted");
                     thisCell.style.backgroundColor = shipColor;
                     cellRow++;
                 }

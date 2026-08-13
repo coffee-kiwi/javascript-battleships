@@ -27,6 +27,8 @@ function checkSetupProgress() {
 function startNewGame() {
     mainElement.classList.remove('game-phase');
     oppBoard.classList.add('gone');
+    toggleBtn.classList.remove('gone');
+    resetBtn.classList.remove('gone');
     
     if (getCurrentPlayer().name === "Player2") {
         changePlayer();
@@ -74,6 +76,7 @@ nextPlayerSetupBtn.addEventListener('click', () => {
     const currentPlayer = getCurrentPlayer();
     nextPlayerSetupBtn.classList.add('gone');
     playersMessage.textContent = `${currentPlayer.name} please place your ships`;
+    toggleBtn.textContent = 'Horizontal Placement';
     setup.updatePlayersGrid(currentPlayer.gameboard);
     setup.resetDraggableShips(allShips);
     addCellListeners(checkSetupProgress);
