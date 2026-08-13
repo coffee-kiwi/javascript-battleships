@@ -5,7 +5,6 @@
         --text-color: #e0e0e0;
         --board-grid-color: lightgrey;
         --cell-border: #333333;
-        --ship-color: #65a0ec;
         --carrier-color: salmon;
         --battleship-color: lightskyblue;
         --cruiser-color: gold;
@@ -21,27 +20,51 @@ main {
     grid-template-areas: 
     "sidebar"
     "message"
+    "player"
+    "between"
+    "bottom-message"
+    "opp";
+}
+
+main.game-phase {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "sidebar"
+    "message"
     "opp"
     "between"
     "bottom-message"
     "player";
 }
 
-.sidebar        { grid-area: sidebar; }
+
 .top-message    { grid-area: message; }
 .opp-board      { grid-area: opp; }
 .in-between     { grid-area: between; }
 .bottom-message { grid-area: bottom-message; }
 .player-view    { grid-area: player; }
+.sidebar        { 
+    grid-area: sidebar; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 @media (min-width: 700px) {
     main {
         grid-template-columns: auto 1fr 1fr;
         grid-template-areas: 
-        "sidebar between message"
-        "sidebar opp  player";
+        "sidebar message message"
+        "sidebar player bewteen";
     /* Switch opp and player for better layout */
         gap: 8px;
+    }
+
+    main.game-phase {
+        grid-template-columns: auto 1fr 1fr 1fr;
+        grid-template-areas: 
+        "sidebar message message message"
+        "sidebar opp     between player";
     }
 }
 
@@ -63,8 +86,8 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
     gap: 8px;
-    margin: 4px;
-    padding: 4px;
+    /* margin: 4px; */
+    padding: 4px 0px;
 }
 
 .draggableShipsContainer div {
@@ -123,6 +146,13 @@ div #patrol {
 
 .message-box {
     align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-message {
+    align-self: center;
 }
 
 .players-board,
@@ -136,7 +166,8 @@ div #patrol {
     margin-inline: auto;
 }
 
-.grid-cell {
+.grid-cell,
+.grid-button {
     background-color: var(--board-grid-color);
     border: 1px solid black;
     aspect-ratio: 1;
@@ -152,13 +183,8 @@ div #patrol {
     cursor: pointer;
 }
 
-.highlight {
-    /* background-color: gold; */
-}
-
 .preview {
     transform: scale(0.95);
-    /* background-color: lightskyblue; */
 }
 
 .less-opacity {

@@ -1,6 +1,6 @@
 import './styles.css'
 import * as setup from './setup.js';
-import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn,
+import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn, mainElement,
         playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn, bottomTitle } from './domElements.js';
 import { player1, player2, getCurrentPlayer, changePlayer, setTurnFinished } from './gameState.js';
 import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
@@ -25,6 +25,8 @@ function checkSetupProgress() {
 }
 
 function startNewGame() {
+    mainElement.classList.remove('game-phase');
+    oppBoard.classList.add('gone');
     
     if (getCurrentPlayer().name === "Player2") {
         changePlayer();
@@ -33,7 +35,7 @@ function startNewGame() {
     playersBoard.textContent = '';
     playersMessage.textContent = `${currentPlayer.name} please place your ships`;
     oppBoard.textContent = '';
-    bottomTitle.textContent = '';
+    bottomTitle.classList.add('gone');
     player1.resetBoard();
     player2.resetBoard();
 

@@ -30,7 +30,26 @@ export function updatePlayersGrid(gameboard) {
                 cell.textContent = "O";
                 cell.classList.add('highlight');
             } else if (gameboard.board[r][c] !== null) {
-                cell.classList.add('highlight');
+                switch (gameboard.board[r][c].name) {
+                    case 'carrier':
+                        cell.style.backgroundColor = '--carrier-color';
+                        break;
+                    case 'battleship':
+                        cell.style.backgroundColor = '--battleship-color';
+                        break;
+                    case 'cruiser':
+                        cell.style.backgroundColor = '--cruiser-color';
+                        break;
+                    case 'destroyer':
+                        cell.style.backgroundColor = '--destroyer-color';
+                        break;
+                    case 'patrol':
+                        cell.style.backgroundColor = '--patrol-color';
+                        break;    
+                    // default:
+                    //     break;
+                }
+                // cell.style.backgroundColor = 'lightblue';
             }
 
             playersBoard.appendChild(cell);

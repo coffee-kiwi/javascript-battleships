@@ -1,5 +1,5 @@
 import * as setup from './setup.js';
-import { startGameBtn, playersBoard, playersMessage, oppBoard, nextTurnBtn, passingBtn, bottomTitle } from './domElements.js';
+import { startGameBtn, playersBoard, playersMessage, oppBoard, nextTurnBtn, passingBtn, bottomTitle, mainElement } from './domElements.js';
 import { getTurnFinished, getCurrentPlayer, changePlayer, getOpponent, setTurnFinished } from './gameState.js';
 import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
 
@@ -11,8 +11,9 @@ export function playGame() {
     setup.updatePlayersGrid(currentPlayer.gameboard);
     playersMessage.textContent = `${currentPlayer.name} choose a square`;
     startGameBtn.classList.add('gone');
-    oppBoard.classList.remove('invisible');
+    oppBoard.classList.remove('gone');
     bottomTitle.classList.remove('gone');
+    mainElement.classList.add('game-phase');
 }
 
 export function waitingScreen() {
