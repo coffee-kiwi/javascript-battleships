@@ -8,10 +8,13 @@
   <body>
     <main>
       <section class="sidebar">
-        <button type="button" id="new-game">New Game</button>
-                <!-- Or change these buttons to be pictures of the game pieces? -->
-        <button type="button" id="toggleDir" >Horizontal Placement</button>
-        <button type="button" id="reset">Reset ship placement</button>
+        
+        <div class="button-container">
+          <button type="button" id="new-game">New Game</button>
+          <button type="button" id="toggleDir" >Horizontal Placement</button>
+          <button type="button" id="reset">Reset ship placement</button>
+        </div>
+
         <div class="draggableShipsContainer">
           <div id="carrier" class="draggableShips" draggable="true">Carrier ⑤</div>
           <div id="battleship" class="draggableShips" draggable="true">Battleship ④</div>
@@ -19,12 +22,10 @@
           <div id="destroyer" class="draggableShips" draggable="true">Destroyer ③</div>
           <div id="patrol" class="draggableShips" draggable="true">Patrol ②</div>
         </div>
-        
-        
 
       </section>
 
-      <div class="message-box">
+      <div class="message-box top-message">
         <h1 id="players-message"></h1>
       </div>
 
@@ -38,7 +39,7 @@
         <button type="button" id="nextTurn" class="betweenBtn gone">Next Player</button>
       </div>
 
-      <div class="message-box">
+      <div class="message-box bottom-message">
         <h1 id="bottom-title" class="gone">Your ships are shown below:</h1>
       </div>
       <section class="player-view">
