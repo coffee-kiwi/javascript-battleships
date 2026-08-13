@@ -54,7 +54,7 @@ main.game-phase {
     main {
         grid-template-columns: auto 1fr 1fr;
         grid-template-areas: 
-        "sidebar message message"
+        "sidebar message between"
         "sidebar player bewteen";
     /* Switch opp and player for better layout */
         gap: 8px;
@@ -63,7 +63,7 @@ main.game-phase {
     main.game-phase {
         grid-template-columns: auto 1fr 1fr 1fr;
         grid-template-areas: 
-        "sidebar message message message"
+        "sidebar message message bottom-message"
         "sidebar opp     between player";
     }
 }
