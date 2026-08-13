@@ -70,7 +70,7 @@ export class Gameboard {
                 player.points++;
                 playersMessage.textContent = 'The ship has been sunk!';
             }
-            this.board[row][col] = { hit: true, shipName: square.name};
+            this.board[row][col] = { isHit: true, shipName: square.name};
         } else {
             this.board[row][col] = 0;
         }

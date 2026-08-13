@@ -33,7 +33,7 @@ export function updatePlayersGrid(gameboard) {
             const square = gameboard.board[r][c];
             if (square === 0) {
                 cell.textContent = "X";
-            } else if (square && square.hit) {
+            } else if (square && square.isHit) {
                 cell.textContent = "O";
                 cell.classList.add('highlighted');
                 cell.style.backgroundColor = getShipColorByName(gameboard.board[r][c].name);
@@ -79,7 +79,7 @@ function cellClickHandler(event) {
 }
 
 export function updateOppGrid(gameboard) {
-    const playersBoard = document.querySelector('.opp-board');
+    const oppBoard = document.querySelector('.opp-board');
     console.log(getTurnFinished());
 
     for (let r = 0; r < 10; r++) {
@@ -91,14 +91,23 @@ export function updateOppGrid(gameboard) {
             const square = gameboard.board[r][c];
             if (square === 0) {
                 button.textContent = 'X'
-            } else if (square && square.hit) {
+            } else if (square && square.isHit) {
                 button.textContent = 'O';
             } else if (!getTurnFinished()) {
                 button.addEventListener('click', cellClickHandler);
             }
 
-            playersBoard.appendChild(button);
+            oppBoard.appendChild(button);
         }
     }
+
+    const customCursor = "url('../images/aim.png'), auto";
+    oppBoard.addEventListener('mouseenter', () => {
+        button.style.cursor = customCursor;
+    });
+    oppboard.addEventListener('mouseleave', () => {
+        button.style.cursor = 'default';
+    })
+
 
 }
