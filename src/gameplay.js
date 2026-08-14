@@ -16,12 +16,14 @@ export function playGame() {
     oppBoard.classList.remove('gone');
     bottomTitle.classList.remove('gone');
     mainElement.classList.add('game-phase');
+    const ships = document.querySelectorAll('.draggableShips less-opacity');
+    ships.classList.add('gone');
 }
 
 export function waitingScreen() {
     playersBoard.textContent = '';
     oppBoard.textContent = '';
-    playersMessage.textContent = 'Pass to the next player. Click the button below to start your turn.';
+    playersMessage.textContent = 'Pass to the next player. Click the "Next Player" button.';
     passingBtn.classList.add('gone');
     bottomTitle.classList.add('gone');
     nextTurnBtn.classList.remove('gone')

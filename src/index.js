@@ -15,11 +15,11 @@ function checkSetupProgress() {
         nextPlayerSetupBtn.classList.add('gone');
         startGameBtn.classList.remove('invisible', 'gone');
         playersBoard.textContent = '';
-        playersMessage.textContent = 'Pass to the next player and let them click the button below'; 
+        playersMessage.textContent = 'Pass to the next player and click the "Start Game" button'; 
         startGameBtn.addEventListener('click', playGame);
     } else if (currentPlayer.setupShips === 5) {
         playersBoard.textContent = '';
-        playersMessage.textContent = 'Pass to the next player and let them click the button below' 
+        playersMessage.textContent = 'Pass to the next player and click the "Next Player" button' 
         nextPlayerSetupBtn.classList.remove('gone');
     } else {
         playersMessage.textContent = `${currentPlayer.name} please place your ships`;
@@ -31,6 +31,7 @@ function startNewGame() {
     oppBoard.classList.add('gone');
     toggleBtn.classList.remove('gone');
     resetBtn.classList.remove('gone');
+
     
     if (getCurrentPlayer().name === "Player2") {
         changePlayer();
@@ -49,6 +50,8 @@ function startNewGame() {
     setup.resetDraggableShips(allShips);
 
     document.querySelectorAll('.betweenBtn').forEach(btn => btn.classList.add('gone'));
+    // const ships = document.querySelectorAll('.draggableShips');
+    // ships.classList.remove('gone');
 }
 
 startNewGame();
