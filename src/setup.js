@@ -36,7 +36,7 @@ export function updatePlayersGrid(gameboard) {
             } else if (square && square.isHit) {
                 cell.textContent = "O";
                 cell.classList.add('highlighted');
-                cell.style.backgroundColor = getShipColorByName(gameboard.board[r][c].name);
+                cell.style.backgroundColor = getShipColorByName(gameboard.board[r][c].shipName);
             } else if (square !== null) {
                 cell.classList.add('highlighted');
                 cell.style.backgroundColor = getShipColorByName(gameboard.board[r][c].name);
@@ -100,14 +100,6 @@ export function updateOppGrid(gameboard) {
             oppBoard.appendChild(button);
         }
     }
-
-    // const customCursor = "url('../images/aim.png'), auto";
-    // oppBoard.addEventListener('mouseenter', () => {
-    //     button.style.cursor = customCursor;
-    // });
-    // oppBoard.addEventListener('mouseleave', () => {
-    //     button.style.cursor = 'default';
-    // })
 
 
 }

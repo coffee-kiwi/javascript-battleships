@@ -63,7 +63,7 @@ main.game-phase {
     main.game-phase {
         grid-template-columns: auto 1fr 1fr 1fr;
         grid-template-areas: 
-        "sidebar message message bottom-message"
+        "sidebar message between bottom-message"
         "sidebar opp     between player";
     }
 }
