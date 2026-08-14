@@ -55,6 +55,16 @@ startNewGame();
 addShipDragListeners(allShips);
 addShipClickListeners(allShips);
 
+playersBoard.addEventListener('dragleave', (e) => {
+    if (e.target === playersBoard) {
+        listeners.clearPreviewCells(previewCells);
+    }
+});
+
+playersBoard.addEventListener('mouseleave', () => {
+    listeners.clearPreviewCells(previewCells);
+});
+
 newGameBtn.addEventListener('click', startNewGame);
 
 resetBtn.addEventListener('click', () => {
@@ -98,8 +108,3 @@ nextTurnBtn.addEventListener('click', () => {
     nextTurn();
 })
 
-playersBoard.addEventListener('dragleave', (e) => {
-    if (e.target === playersBoard) {
-        listeners.clearPreviewCells(previewCells);
-    }
-})
