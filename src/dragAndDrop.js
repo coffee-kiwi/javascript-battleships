@@ -17,10 +17,7 @@ export function addCellListeners(checkSetupProgress) {
             listeners.previewShipPlacement(e, myShip, currentPlayer.gameboard.horizontalPlacement, previewCells, color);
         });
 
-        // cell.addEventListener("dragleave", listeners.removePreview);
-
         cell.addEventListener("drop", (e) => {
-            // listeners.removePreview(e);
             listeners.clearPreviewCells(previewCells);
             placeSelectedShip(e.target.dataset.row, e.target.dataset.col, checkSetupProgress);
     });

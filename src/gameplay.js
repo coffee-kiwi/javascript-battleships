@@ -16,8 +16,8 @@ export function playGame() {
     oppBoard.classList.remove('gone');
     bottomTitle.classList.remove('gone');
     mainElement.classList.add('game-phase');
-    const ships = document.querySelectorAll('.draggableShips less-opacity');
-    ships.classList.add('gone');
+    // const ships = document.querySelectorAll('.draggableShips less-opacity');
+    // ships.classList.add('gone');
 }
 
 export function waitingScreen() {
