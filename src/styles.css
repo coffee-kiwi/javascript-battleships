@@ -98,6 +98,11 @@ body {
     /* flex-wrap: nowrap; */
 }
 
+.draggableShips.selected {
+    outline: 3px solid white;
+    outline-offset: 2px;
+}
+
 div #carrier,
 div #battleship,
 div #cruiser,

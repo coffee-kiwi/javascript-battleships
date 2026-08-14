@@ -1,10 +1,12 @@
 import './styles.css'
 import * as setup from './setup.js';
+import * as listeners from './eventListeners.js'
 import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn, mainElement,
         playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn, bottomTitle } from './domElements.js';
-import { player1, player2, getCurrentPlayer, changePlayer, setTurnFinished } from './gameState.js';
-import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
+import { player1, player2, getCurrentPlayer, changePlayer, setTurnFinished, previewCells } from './gameState.js';
+import { addCellListeners, addShipDragListeners, attachAllCellListeners } from './dragAndDrop.js';
 import { playGame, nextTurn, waitingScreen } from './gameplay.js';
+import { addShipClickListeners, addCellClickListeners } from './shipPlacement.js';
 
 function checkSetupProgress() {
     const currentPlayer = getCurrentPlayer();
@@ -43,6 +45,7 @@ function startNewGame() {
 
     setup.newGame();
     addCellListeners(checkSetupProgress);
+    addCellClickListeners(checkSetupProgress);
     setup.resetDraggableShips(allShips);
 
     document.querySelectorAll('.betweenBtn').forEach(btn => btn.classList.add('gone'));
@@ -50,6 +53,7 @@ function startNewGame() {
 
 startNewGame();
 addShipDragListeners(allShips);
+addShipClickListeners(allShips);
 
 newGameBtn.addEventListener('click', startNewGame);
 
@@ -59,7 +63,8 @@ resetBtn.addEventListener('click', () => {
     playersBoard.textContent = '';
     setup.resetDraggableShips(allShips);
     setup.updatePlayersGrid(currentPlayer.gameboard);
-    addCellListeners(checkSetupProgress);
+    attachAllCellListeners(checkSetupProgress);
+    // addCellListeners(checkSetupProgress);
     toggleBtn.textContent = 'Horizontal Placement';
 });
 
@@ -79,7 +84,9 @@ nextPlayerSetupBtn.addEventListener('click', () => {
     toggleBtn.textContent = 'Horizontal Placement';
     setup.updatePlayersGrid(currentPlayer.gameboard);
     setup.resetDraggableShips(allShips);
-    addCellListeners(checkSetupProgress);
+    attachAllCellListeners(checkSetupProgress);
+    // addCellListeners(checkSetupProgress);
+    // addCellClickListeners(checkSetupProgress);
 });
 
 passingBtn.addEventListener('click', () => {
@@ -89,4 +96,10 @@ passingBtn.addEventListener('click', () => {
 
 nextTurnBtn.addEventListener('click', () => {
     nextTurn();
+})
+
+playersBoard.addEventListener('dragleave', (e) => {
+    if (e.target === playersBoard) {
+        listeners.clearPreviewCells(previewCells);
+    }
 })
