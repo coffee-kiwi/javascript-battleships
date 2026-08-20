@@ -55,7 +55,7 @@ function cellClickHandler(event) {
     opponent.gameboard.receiveAttack([clickedRow, clickedCol]);
     oppBoard.textContent = '';
 
-    if (opponent.gameboard.board[clickedRow][clickedCol].hit) {
+    if (opponent.gameboard.board[clickedRow][clickedCol].isHit) {
         if (playersMessage.textContent !== 'The ship has been sunk!') {
             playersMessage.textContent = 'Its a hit!';
         }

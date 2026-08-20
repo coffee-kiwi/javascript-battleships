@@ -51,6 +51,8 @@ main.game-phase {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 16px;
+    min-width: 85px;
 }
 
 @media (min-width: 700px) {
