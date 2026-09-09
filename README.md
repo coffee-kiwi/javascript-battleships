@@ -1,6 +1,6 @@
 # Battleships
 
-English is followed by Japanese.
+英語の後に日本語が続きます。
 
 ## 🌟 Highlights
 
