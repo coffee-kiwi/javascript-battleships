@@ -2,7 +2,7 @@ import './styles.css'
 import * as setup from './setup.js';
 import * as listeners from './eventListeners.js'
 import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn, mainElement,
-        playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn, bottomTitle } from './domElements.js';
+        playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn, bottomTitle, shipsContainer } from './domElements.js';
 import { player1, player2, getCurrentPlayer, changePlayer, setTurnFinished, previewCells } from './gameState.js';
 import { addCellListeners, addShipDragListeners, attachAllCellListeners } from './dragAndDrop.js';
 import { playGame, nextTurn, waitingScreen } from './gameplay.js';
@@ -17,10 +17,12 @@ function checkSetupProgress() {
         playersBoard.textContent = '';
         playersMessage.textContent = 'Pass to the next player and click the "Start Game" button'; 
         startGameBtn.addEventListener('click', playGame);
+        shipsContainer.classList.add('gone');
     } else if (currentPlayer.setupShips === 5) {
         playersBoard.textContent = '';
         playersMessage.textContent = 'Pass to the next player and click the "Next Player" button' 
         nextPlayerSetupBtn.classList.remove('gone');
+        shipsContainer.classList.add('gone');
     } else {
         playersMessage.textContent = `${currentPlayer.name} please place your ships`;
     }
@@ -93,6 +95,7 @@ nextPlayerSetupBtn.addEventListener('click', () => {
     changePlayer();
     const currentPlayer = getCurrentPlayer();
     nextPlayerSetupBtn.classList.add('gone');
+    shipsContainer.classList.remove('gone');
     playersMessage.textContent = `${currentPlayer.name} please place your ships`;
     toggleBtn.textContent = 'Horizontal Placement';
     setup.updatePlayersGrid(currentPlayer.gameboard);

@@ -46,6 +46,8 @@ main.game-phase {
 .bottom-message { grid-area: bottom-message; }
 .player-view    { grid-area: player; }
 .filler         { grid-area: filler;}
+.in-between     { grid-area: sidebar;}
+.draggableShipsContainer { grid-area: ships;}
 .sidebar        { 
     grid-area: sidebar; 
     display: flex;
@@ -68,7 +70,7 @@ main.game-phase {
     main.game-phase {
         grid-template-columns: auto 1fr 1fr;
         grid-template-areas: 
-        "message between bottom-message"
+        "message sidebar bottom-message"
         "opp sidebar player";
         /* Maybe add filler to top, add 'gone' class to sidebar 
         ship elements as not used anymore */
@@ -100,7 +102,19 @@ body {
     border-radius: 5px;
     padding: 12px;
     margin: 4px;
+    /* background-color: #65a0ec; */
+}
+
+.button-container button {
     background-color: #65a0ec;
+}
+
+/* Above background color has higher selector which overrides bg-color? */
+#nextPlayerSetup,
+#nextTurn,
+#passing,
+#startGame {
+    background-color: var(--patrol-color);
 }
 
 .draggableShipsContainer {

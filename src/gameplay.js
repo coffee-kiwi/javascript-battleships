@@ -1,5 +1,5 @@
 import * as setup from './setup.js';
-import { startGameBtn, playersBoard, playersMessage, oppBoard, nextTurnBtn, passingBtn, bottomTitle, mainElement, toggleBtn, resetBtn } from './domElements.js';
+import { startGameBtn, playersBoard, playersMessage, oppBoard, nextTurnBtn, passingBtn, bottomTitle, mainElement, toggleBtn, resetBtn, shipsContainer } from './domElements.js';
 import { getTurnFinished, getCurrentPlayer, changePlayer, getOpponent, setTurnFinished } from './gameState.js';
 import { addCellListeners, addShipDragListeners } from './dragAndDrop.js';
 
@@ -7,6 +7,7 @@ export function playGame() {
     changePlayer();
     const currentPlayer = getCurrentPlayer();
     const opponent = getOpponent();
+
     setup.updateOppGrid(opponent.gameboard);
     setup.updatePlayersGrid(currentPlayer.gameboard);
     playersMessage.textContent = `${currentPlayer.name} choose a square`;
@@ -16,6 +17,7 @@ export function playGame() {
     oppBoard.classList.remove('gone');
     bottomTitle.classList.remove('gone');
     mainElement.classList.add('game-phase');
+    // shipsContainer.classList.add('gone');
     // const ships = document.querySelectorAll('.draggableShips less-opacity');
     // ships.classList.add('gone');
 }

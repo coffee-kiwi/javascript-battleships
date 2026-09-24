@@ -12,3 +12,4 @@ export const oppMessage = document.getElementById('opps-message');
 export const allShips = document.querySelectorAll('[draggable="true"]');
 export const bottomTitle = document.getElementById('bottom-title');
 export const mainElement = document.querySelector('main');
+export const shipsContainer = document.querySelector(".draggableShipsContainer");
