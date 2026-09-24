@@ -1,5 +1,4 @@
 import * as listeners from './eventListeners.js';
-import { playersMessage } from './domElements.js';
 import { getCurrentPlayer, getShipName, setShipName, getShipColor, setShipColor, previewCells } from './gameState.js';
 import { placeSelectedShip, addCellClickListeners } from './shipPlacement.js';
 

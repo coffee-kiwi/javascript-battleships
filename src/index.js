@@ -3,7 +3,7 @@ import * as setup from './setup.js';
 import * as listeners from './eventListeners.js'
 import { newGameBtn, resetBtn, toggleBtn, nextPlayerSetupBtn, startGameBtn, mainElement,
         playersBoard, playersMessage, oppBoard, allShips, nextTurnBtn, passingBtn, bottomTitle, shipsContainer } from './domElements.js';
-import { player1, player2, getCurrentPlayer, changePlayer, setTurnFinished, previewCells } from './gameState.js';
+import { player1, player2, getCurrentPlayer, changePlayer, previewCells } from './gameState.js';
 import { addCellListeners, addShipDragListeners, attachAllCellListeners } from './dragAndDrop.js';
 import { playGame, nextTurn, waitingScreen } from './gameplay.js';
 import { addShipClickListeners, addCellClickListeners } from './shipPlacement.js';
