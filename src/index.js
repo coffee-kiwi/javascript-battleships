@@ -33,7 +33,7 @@ function startNewGame() {
     oppBoard.classList.add('gone');
     toggleBtn.classList.remove('gone');
     resetBtn.classList.remove('gone');
-
+    shipsContainer.classList.remove('gone')
     
     if (getCurrentPlayer().name === "Player2") {
         changePlayer();

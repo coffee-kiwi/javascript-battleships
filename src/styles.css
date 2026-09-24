@@ -13,12 +13,39 @@
     }
 
 }
-
 main {
     display: grid;
     grid-template-columns: 1fr;
+}
+
+main.game-phase {
+    grid-template-columns: 1fr;
+}
+
+.top-message    { grid-area: message; }
+.opp-board      { grid-area: opp; }
+.in-between     { grid-area: between; }
+.draggableShipsContainer { grid-area: ships; }
+.button-container {grid-area: buttons; display: flex; flex-direction: row;}
+.bottom-message { grid-area: bottom-message; }
+.player-view    { grid-area: player; }
+.filler         { grid-area: filler;}
+
+/* .sidebar        { 
+    grid-area: sidebar; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    min-width: 85px;
+}  */
+
+ main {
+    display: grid;
+    grid-template-columns: 1fr;
     grid-template-areas: 
-    "sidebar"
+    "buttons"
+    "ships"
     "message"
     "player"
     "between"
@@ -30,13 +57,15 @@ main {
 main.game-phase {
     grid-template-columns: 1fr;
     grid-template-areas: 
-    "sidebar"
+    /* "sidebar" */
+    "buttons"
     "message"
     "opp"
     "between"
     "bottom-message"
     "player"
     "filler";
+    gap: 16px;
 }
 
 
@@ -46,8 +75,7 @@ main.game-phase {
 .bottom-message { grid-area: bottom-message; }
 .player-view    { grid-area: player; }
 .filler         { grid-area: filler;}
-.in-between     { grid-area: sidebar;}
-.draggableShipsContainer { grid-area: ships;}
+
 .sidebar        { 
     grid-area: sidebar; 
     display: flex;
@@ -55,9 +83,9 @@ main.game-phase {
     justify-content: center;
     gap: 16px;
     min-width: 85px;
-}
+} 
 
-@media (min-width: 700px) {
+/* @media (min-width: 700px) {
     main {
         grid-template-columns: auto 1fr;
         grid-template-areas: 
@@ -72,8 +100,6 @@ main.game-phase {
         grid-template-areas: 
         "message sidebar bottom-message"
         "opp sidebar player";
-        /* Maybe add filler to top, add 'gone' class to sidebar 
-        ship elements as not used anymore */
     }
 
     .draggableShipsContainer {
@@ -89,7 +115,7 @@ main.game-phase {
     align-items: stretch;
     }
 
-}
+} */
 
 body {
     background-color: var(--bg-color);
@@ -97,17 +123,18 @@ body {
 }
 
 .sidebar button,
-.in-between button {
+.in-between button,
+.button-container button {
     border: none;
     border-radius: 5px;
     padding: 12px;
     margin: 4px;
-    /* background-color: #65a0ec; */
-}
-
-.button-container button {
     background-color: #65a0ec;
 }
+
+/* .button-container button {
+    background-color: #65a0ec;
+} */
 
 /* Above background color has higher selector which overrides bg-color? */
 #nextPlayerSetup,
