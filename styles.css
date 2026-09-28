@@ -1,0 +1,279 @@
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --board-grid-color: lightgrey;
+        --cell-border: #333333;
+        --carrier-color: salmon;
+        --battleship-color: lightskyblue;
+        --cruiser-color: gold;
+        --destroyer-color: blueviolet;
+        --patrol-color: orange;
+    }
+
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+main.game-phase {
+    grid-template-columns: 1fr;
+}
+
+.top-message    { grid-area: message; }
+.opp-board      { grid-area: opp; }
+.in-between     { grid-area: between; }
+.draggableShipsContainer { grid-area: ships; }
+.button-container {grid-area: buttons; display: flex; flex-direction: row;}
+.bottom-message { grid-area: bottom-message; }
+.player-view    { grid-area: player; }
+.filler         { grid-area: filler;}
+
+/* .sidebar        { 
+    grid-area: sidebar; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    min-width: 85px;
+}  */
+
+ main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "buttons"
+    "ships"
+    "message"
+    "player"
+    "between"
+    "bottom-message"
+    "opp"
+    "filler";
+}
+
+main.game-phase {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    /* "sidebar" */
+    "buttons"
+    "message"
+    "opp"
+    "between"
+    "bottom-message"
+    "player"
+    "filler";
+    gap: 16px;
+}
+
+
+.top-message    { grid-area: message; }
+.opp-board      { grid-area: opp; }
+.in-between     { grid-area: between; }
+.bottom-message { grid-area: bottom-message; }
+.player-view    { grid-area: player; }
+.filler         { grid-area: filler;}
+
+.sidebar        { 
+    grid-area: sidebar; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    min-width: 85px;
+} 
+
+/* @media (min-width: 700px) {
+    main {
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+        "filler message"
+        "sidebar player"
+        "sidebar between";
+        gap: 8px;
+    }
+
+    main.game-phase {
+        grid-template-columns: auto 1fr 1fr;
+        grid-template-areas: 
+        "message sidebar bottom-message"
+        "opp sidebar player";
+    }
+
+    .draggableShipsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; 
+    }
+
+    .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    }
+
+} */
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.sidebar button,
+.in-between button,
+.button-container button {
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    margin: 4px;
+    background-color: #65a0ec;
+}
+
+/* .button-container button {
+    background-color: #65a0ec;
+} */
+
+/* Above background color has higher selector which overrides bg-color? */
+#nextPlayerSetup,
+#nextTurn,
+#passing,
+#startGame {
+    background-color: var(--patrol-color);
+}
+
+.draggableShipsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+    gap: 8px;
+    padding: 4px 0px;
+}
+
+.draggableShipsContainer div {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    color: #121212;
+    /* flex-wrap: nowrap; */
+}
+
+.draggableShips.selected {
+    outline: 3px solid white;
+    outline-offset: 2px;
+}
+
+div #carrier,
+div #battleship,
+div #cruiser,
+div #destroyer,
+div #patrol {
+    /* width: clamp(75px, 1vw + 1rem, 250px); */
+    background-color: var(--carrier-color);
+    height: auto;
+    border: none;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+div #battleship {
+    background-color: var(--battleship-color);
+}
+
+div #cruiser {
+    background-color: var(--cruiser-color);
+}
+
+div #destroyer {
+    background-color: var(--destroyer-color);
+}
+
+div #patrol {
+    background-color: var(--patrol-color);
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.gone {
+    display: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.in-between {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    height: 5vh;
+}
+
+.message-box {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-message {
+    align-self: center;
+}
+
+.players-board,
+.opp-board {
+    width: clamp(280px, 45vw, 500px);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    background-color: var(--bg-color);
+    justify-content: center;
+    margin-inline: auto;
+}
+
+.grid-cell,
+.grid-button {
+    background-color: var(--board-grid-color);
+    border: 1px solid black;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 8px;
+}
+
+.grid-button {
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.preview {
+    transform: scale(0.95);
+}
+
+.less-opacity {
+    opacity: 0.3;
+}
+
+.highlighted {
+    /* This class prevents colors being
+    overwritten when dragging new ships */
+}
+
+.filler {
+    /* This is used to help with filling empty space on grid layout
+    and reduce jumping around of objects */
+    background-color: va(--bg-color);
+    min-width: 5vw;
+    min-height: auto;
+}
+
+/*# sourceMappingURL=styles.css.map*/
